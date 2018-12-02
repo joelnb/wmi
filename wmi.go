@@ -54,6 +54,10 @@ var (
 // S_FALSE is returned by CoInitializeEx if it was already called on this thread.
 const S_FALSE = 0x00000001
 
+type WMIResult interface {
+	SetResultPointer(*ole.IDispatch)
+}
+
 // QueryNamespace invokes Query with the given namespace on the local machine.
 func QueryNamespace(query string, dst interface{}, namespace string) error {
 	return Query(query, dst, nil, namespace)
